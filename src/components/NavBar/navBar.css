@@ -1,0 +1,54 @@
+.nav-bar {
+  width: 100%;
+  height: 4rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 0 0 .25rem .25rem;
+  top: 0;
+}
+
+.nav-bar .list {
+  gap: 3.5rem;
+  list-style: none;
+  width: 80%;
+  height: 100%;
+  padding: 0 4rem;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
+.nav-bar .list .link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-bar .list .link .list-item {
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+.nav-bar .list .link .list-item:hover {
+  opacity: .5;
+}
+
+.nav-bar .list .link .list-item:active {
+  opacity: .5;
+}
+
+.nav-bar .list .link .list-item .sub-menu {
+  list-style: none;
+  font-size: 1.1rem;
+  position: absolute;
+}
+/*# sourceMappingURL=navBar.css.map */

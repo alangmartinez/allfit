@@ -1,0 +1,14 @@
+.search-input {
+  height: 50%;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  margin-left: 1rem;
+  padding: 0 .5rem;
+}
+
+.fa-magnifying-glass {
+  color: #fff;
+  cursor: pointer;
+}
+/*# sourceMappingURL=searchInput.css.map */

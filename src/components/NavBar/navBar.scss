@@ -1,0 +1,44 @@
+.nav-bar{
+    width: 100%;
+    height: 4rem;
+    background-color: rgba($color: #000000, $alpha: .7);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 .25rem .25rem;
+    top: 0;
+
+    .list{
+        gap: 3.5rem;
+        list-style: none;
+        width: 80%;
+        height: 100%;
+        padding: 0 4rem;
+        order: 2;
+
+        .link{
+            text-decoration: none;
+            color: #fff;
+
+            .list-item{
+                color: #fff;
+                cursor: pointer;
+                font-size: 1.2rem;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+    
+                &:hover{
+                    opacity: .5;
+                }
+                &:active{
+                    opacity: .5;
+                }
+
+                .sub-menu{
+                    list-style: none;
+                    font-size: 1.1rem;
+                    position: absolute;
+                }
+            }
+        }
+    }
+}
