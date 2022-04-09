@@ -1,39 +1,29 @@
-import { useState } from 'react';
-import './itemCount.css'
+import { Component } from "react";
+import './itemCount.css';
 
-export default function ItemCount({stock, initial}) {
-
-    const [count, setCount] = useState(initial);
-
-    const add = ()=>{
-        if(count < stock){
-            setCount(count + 1);
-        }
+class ItemCount extends Component{
+    constructor(props){
+        super(props);
+        this.state = { count: 0 };
     }
-    const decrease = ()=>{
-        if(count > 0){
-            setCount(count - 1)
-        }
+    componentDidMount(){
+        setTimeout(()=>{
+            console.log('El componente se ha montado despues de 3 seg')
+        }, 3000)
     }
+    componentDidUpdate(){
+        console.log('Se ha re-renderizado el componente')
+    }
+    
 
-  return (
-    <>
-        <div className="d-flex flex-column">
-            <button 
-                className='btn btn-primary m-auto my-3 py-2'
-                onClick={add}
-            >
-                +
-            </button>
-            <p className='m-auto count'>{count}</p>
-            <button 
-                className='btn btn-primary m-auto my-3 py-2'
-                onClick={decrease}
-            >
-                -
-            </button>
-            
-        </div>
-    </>
-  )
+    render(){
+        return(
+            <div className="d-flex justify-content-center flex-column align-items-center">
+                <button className="btn btn-primary" onClick={()=> this.setState({count: this.state.count + 1})}> + </button>
+                <p className="count">You clicked {this.state.count} times!</p>
+                <button className="btn btn-primary" onClick={()=> this.setState({count: this.state.count - 1})}> - </button>
+            </div>
+        )
+    }
 }
+export default ItemCount;

@@ -1,0 +1,15 @@
+.cart-widget{
+    order: 3;
+    margin-right: .5rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+
+    .fa-cart-shopping{
+        color: #fff;
+        line-height: unset;
+    }
+    .quantity{
+        color: #fff;
+        margin-left: .5rem;
+    }
+}
