@@ -1,29 +1,44 @@
-import { Component } from "react";
-import './itemCount.css';
+import {useState, useEffect} from 'react'
+import './itemCount.css'
 
-class ItemCount extends Component{
-    constructor(props){
-        super(props);
-        this.state = { count: 0 };
-    }
-    componentDidMount(){
-        setTimeout(()=>{
-            console.log('El componente se ha montado despues de 3 seg')
-        }, 3000)
-    }
-    componentDidUpdate(){
-        console.log('Se ha re-renderizado el componente')
-    }
-    
+export default function ItemCount({initial, stock, onAdd}) {
 
-    render(){
+    const [count, setCount] = useState(initial);
+
+    useEffect(()=> {
+        console.log('Se ha montado el componente');
         return(
-            <div className="d-flex justify-content-center flex-column align-items-center">
-                <button className="btn btn-primary" onClick={()=> this.setState({count: this.state.count + 1})}> + </button>
-                <p className="count">You clicked {this.state.count} times!</p>
-                <button className="btn btn-primary" onClick={()=> this.setState({count: this.state.count - 1})}> - </button>
-            </div>
+            ()=>{
+                console.log('Se ha desmontado el componente')
+            }
         )
+    }, []);
+
+    const add = ()=>{
+        if(count < stock){
+            setCount(count + 1)
+        }
     }
+    const decrease = ()=>{
+        if(count > 0 ) setCount(count - 1)
+    }
+
+    console.log('Se va a montar el componente');
+
+  return (
+        <>
+            <div className="d-flex justify-content-center align-items-center">
+                <p className="count me-3 my-auto ">You clicked {count} times!</p>
+                <button className="btn btn-light me-3 py-1 px-3" onClick={add}> + </button>
+                <button className="btn btn-light me-3 py-1 px-3" onClick={decrease}> - </button>
+            </div>
+            <button 
+                className='btn btn-warning'
+                onClick={()=> onAdd(count)}
+            >
+                <i className="fa-solid fa-cart-plus me-1 px-2"></i>Agregar al Carrito
+            </button>
+        </>
+  )
 }
-export default ItemCount;
+

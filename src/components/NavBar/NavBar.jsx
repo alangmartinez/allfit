@@ -26,7 +26,11 @@ export default function navBar() {
                     <a href="#" className='link'><li className="list-item">Contact Us</li></a>
                 </ul>
                 <SearchInput/>
-                <CartWidget quantity={0}/>
+                <CartWidget quantity={0}>
+                    <div className="modal-cart container">
+                        <p className='text m-auto'>Probando Modal Cart</p>
+                    </div>
+                </CartWidget>
         </nav>
     </>
   )

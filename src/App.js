@@ -10,11 +10,10 @@ export default function App() {
       <NavBar />
       <main className='main'>
         <ItemListContainer title='Welcome to All Fit'>
-          <button className='btn btn-primary ms-auto'>Boton 1</button>
+          <button className='btn btn-primary m-auto'>Boton 1</button>
           <button className='btn btn-primary m-auto'>Boton 2</button>
         </ItemListContainer>
         <Avatar name="Emiliano"/>
-        <ItemCount initial={0} stock={10}/>
       </main>
     </>
   )

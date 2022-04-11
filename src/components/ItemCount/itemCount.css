@@ -1,11 +1,38 @@
 .btn {
-  width: 10%;
-  font-size: 1.5rem;
+  width: auto;
   line-height: unset;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.btn:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-ligth:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-color: unset;
+  background-color: unset;
+}
+
+.btn-ligth:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .count {
   color: #fff;
   font-size: 1.5rem;
+}
+
+.pokemon-data .name {
+  color: #fff;
 }
 /*# sourceMappingURL=itemCount.css.map */
