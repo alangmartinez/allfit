@@ -10,7 +10,9 @@ const products = [
             xl: true
         },
         image: 'https://essential.vteximg.com.br/arquivos/ids/532332-454-423/302-0708_1.jpg?v=637828507375000000',
-        description: 'La camiseta Nike Sportswear rinde homenaje al logotipo de Nike con un gráfico estampado con bordado de puntadas de satén.'
+        description: 'La camiseta Nike Sportswear rinde homenaje al logotipo de Nike con un gráfico estampado con bordado de puntadas de satén.',
+        stock: 11
+
     },
     {
         id: 2,
@@ -23,7 +25,8 @@ const products = [
             xl: false
         },
         image: 	'https://essential.vteximg.com.br/arquivos/ids/516623-1000-1000/302-0671_1.jpg?v=637791009551070000',
-        description: 'Está confeccionada con un ajuste clásico y nuestro algodón de uso diario para brindar una sensación familiar.'
+        description: 'Está confeccionada con un ajuste clásico y nuestro algodón de uso diario para brindar una sensación familiar.',
+        stock: 10
     },
     {
         id: 3,
@@ -36,7 +39,8 @@ const products = [
             xl: false
         },
         image: 	'https://essential.vteximg.com.br/arquivos/ids/518722-1000-1000/302-0710_1.jpg?v=637793372247470000',
-        description: 'Con algodón y un ajuste clásico, esta camiseta tiene gráficos bordados repetidos y en capas que dan nueva vida a un básico de Nike.'
+        description: 'Con algodón y un ajuste clásico, esta camiseta tiene gráficos bordados repetidos y en capas que dan nueva vida a un básico de Nike.',
+        stock: 13
     },
     {
         id: 4,
@@ -50,7 +54,8 @@ const products = [
             xl: false
         },
         image: 	'https://essential.vteximg.com.br/arquivos/ids/441796-1000-1000/302-9219_1.jpg?v=637607550165800000',
-        description: 'REMERA NIKE NSW ICON CLASH De Moda Para Mujer Código: DC5294-615.'
+        description: 'REMERA NIKE NSW ICON CLASH De Moda Para Mujer Código: DC5294-615.',
+        stock: 10
     }
 ]
 
