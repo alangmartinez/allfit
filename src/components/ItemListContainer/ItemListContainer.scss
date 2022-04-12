@@ -1,7 +1,29 @@
 .title{
     color: #fff;
-    font-family: 'Bangers', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3.7rem;
+    text-align: center;
+    text-shadow: 2px 4px 5px #000000;
 }
 .data{
     color: #fff;
+}
+.card{
+    cursor: pointer;
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 400ms;
+
+    &:hover{
+        transform: scale(1.05);
+
+        .card-img-top{
+            filter: grayscale(100%);
+        }
+    }
+    .card-img-top{
+        max-height: 267px;
+        object-fit: cover;
+    }
+    .card-body{
+        height: 273px;
+    }
 }
