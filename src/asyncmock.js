@@ -1,4 +1,4 @@
-const products = [
+export const products = [
     {
         id: 1,
         title: 'Remera Nike Swoosh 50',
@@ -66,3 +66,12 @@ export const getProducts = ()=>{
         },2000)
     })
 }
+
+export const getProductsById = (id) => {
+    return new Promise ((resolve)=>{
+        setTimeout(()=> {
+            resolve(products => products.find(product => product.id == id ))
+        }, 2000)
+    })
+}
+

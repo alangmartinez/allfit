@@ -1,10 +1,7 @@
 import './searchInput.css'
 
-export default function SearchInput() {
+export default function SearchInput({handleOnKeyDownSearch}) {
 
-    const handleOnChangeSearch = (e)=>{
-        console.log(e.target.value)
-    }
     const search = ()=>{
         const searchInput = document.getElementById('search-input');
         searchInput.value = '';
@@ -20,7 +17,7 @@ export default function SearchInput() {
                 name="search"
                 id="search-input"
                 placeholder='Search...'
-                onChange={handleOnChangeSearch}
+                onKeyDown={handleOnKeyDownSearch}
             />
         </div>
     </>

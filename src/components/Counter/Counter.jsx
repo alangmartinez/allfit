@@ -1,4 +1,5 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react';
+import './Counter.css';
 
 export default function Counter({initial, stock, onAdd}) {
     const [count, setCount] = useState(initial);
@@ -24,7 +25,7 @@ export default function Counter({initial, stock, onAdd}) {
         <button className="btn btn-outline-warning" onClick={decrease}>
           -
         </button>
-        <span className="count" style={{ color: "#000" }}>
+        <span className="count">
           {count}
         </span>
         <button

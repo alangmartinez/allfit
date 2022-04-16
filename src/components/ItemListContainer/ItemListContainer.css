@@ -19,14 +19,4 @@
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
-
-.card .card-img-top {
-  max-height: 267px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.card .card-body {
-  height: 273px;
-}
 /*# sourceMappingURL=ItemListContainer.css.map */

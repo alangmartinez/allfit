@@ -1,11 +1,51 @@
-.card-img-top {
+.card {
+  height: 29rem;
+  border: none;
+}
+
+.card .card-body {
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  color: #f9f9f9;
+}
+
+.card .card-body .fa-chevron-down {
+  position: absolute;
+  right: 1.5rem;
   cursor: pointer;
+}
+
+.card .card-body .icon-card-details {
+  cursor: pointer;
+  font-size: 1.6rem;
+  position: absolute;
+  right: .5rem;
+  bottom: .7rem;
+  text-decoration: none;
+  color: #f9f9f9;
+}
+
+.card .card-img-top {
+  height: 100%;
+  cursor: pointer;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: .25rem;
   -webkit-transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 170ms;
   transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 170ms;
 }
 
-.card-img-top:hover {
+.card .card-img-top:hover {
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
+}
+
+.card .box-buttons {
+  width: 100%;
+  padding-bottom: 1rem;
 }
 /*# sourceMappingURL=Item.css.map */

@@ -1,8 +1,36 @@
-.card-img-top{
-    cursor: pointer;
-    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 170ms;
+@import './../../variables';
 
-    &:hover{
-        filter: grayscale(100%);
+.card{
+    height: 29rem;
+    border: none;
+
+    .card-body{
+        background-color: $bg-color-blur--primary;
+        backdrop-filter: blur(10px);
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        color: $txt-color--primary;
+
+        .fa-chevron-down{
+            position: absolute;
+            right: 1.5rem;
+            cursor: pointer;
+        }
+    }
+    .card-img-top{
+        height: 100%;
+        cursor: pointer;
+        object-fit: cover;
+        border-radius: .25rem;
+        transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 170ms;
+    
+        &:hover{
+            filter: grayscale(100%);
+        }
+    }
+    .box-buttons{
+        width: 100%;
+        padding-bottom: 1rem;
     }
 }

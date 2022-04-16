@@ -1,23 +1,32 @@
-import Counter from '../Counter/Counter';
-import './Item.css';
+import Counter from "../Counter/Counter";
+import "./Item.css";
+import { useState } from "react";
 
 export default function Item({ id, title, image, price, description, stock }) {
+  const [show, setShow] = useState();
+    
 
   return (
     <>
       <div className="card shadow-lg" style={{ width: 18 + "rem" }} key={id}>
         <img src={image} className="card-img-top img-fluid" alt={title} />
-        <div className="card-body shadow-lg">
-          <h5 className="card-title">{title}</h5>
-          <span className="price">{price}</span>
-          <hr />
-          <p className="card-text">{description}</p>
-          <div className="d-flex justify-content-between align-items-center mt-auto mb-0">
-            <Counter initial={0} stock={stock}/>
-            <a className="btn btn-warning me-2" style={{ width: "auto" }}>
-              <i className="fa-solid fa-cart-plus me-2"></i>Add to Cart
-            </a>
-          </div>
+        {
+          show ? <div className="card-body d-flex flex-column">
+                  <p className="card-title">{title}</p>
+                  <span className="price">{price}</span>
+                  <i className="fa-solid fa-chevron-down" onClick={()=> setShow(!show)}></i>
+                  <hr />
+                  <p className='card-text'>{description}</p>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <Counter initial={0} stock={stock}/>
+                    <button className='btn btn-warning'><i className="fa-solid fa-cart-plus me-2"></i>Add to Cart</button>
+                  </div>
+                </div> : ''
+        }
+        <div className="d-flex justify-content-center align-items-center position-absolute bottom-0 box-buttons">
+        {
+          show ? '' : <button className="btn btn-outline-warning" onClick={()=> setShow(!show)}>+ See More</button>
+        }
         </div>
       </div>
     </>
