@@ -1,0 +1,15 @@
+.login{
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    order: 3;
+    align-self: center;
+
+    &:hover{
+        opacity: .5;
+    }
+    .fa-arrow-right-to-bracket{
+        font-size: 1.3rem;
+        line-height: unset;
+    }
+}

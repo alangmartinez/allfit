@@ -6,11 +6,20 @@ import './ItemListContainer.css'
 export default function ItemListContainer({title}) {
   const [products, setProducts] = useState([]);
 
-  useEffect(()=>{
-      getProducts().then(products =>{
-          setProducts(products)
-      })
-  },[])
+  useEffect(() => {
+    getProducts()
+      .then((products) => setProducts(products))
+      .catch((err) => console.log(err));
+  }, []);
+
+  // const onAdd = (operador) => {
+  //   if (operador === "+") {
+  //     setCount(count + 1);
+  //   }
+  //   if (operador === "-") {
+  //     setCount(count - 1);
+  //   }
+  // };
 
   return (
     <>

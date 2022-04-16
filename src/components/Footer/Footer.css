@@ -1,0 +1,10 @@
+.footer {
+  height: 10rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  margin-top: 3rem;
+  border-radius: .25rem 0 0 .25rem;
+}
+/*# sourceMappingURL=Footer.css.map */

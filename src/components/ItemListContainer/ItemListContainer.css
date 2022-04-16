@@ -11,7 +11,6 @@
 }
 
 .card {
-  cursor: pointer;
   -webkit-transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 400ms;
   transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 400ms;
 }
@@ -19,11 +18,6 @@
 .card:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
-}
-
-.card:hover .card-img-top {
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
 }
 
 .card .card-img-top {
