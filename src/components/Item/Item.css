@@ -1,11 +1,60 @@
-.card-img-top {
+.card {
+  height: 29rem;
+  border: none;
+}
+
+.card .card-body {
+  background-color: rgba(0, 0, 0, 0.75);
+  height: 60%;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  color: #f9f9f9;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  border-radius: .25rem .25rem 0 0;
+}
+
+.card .card-body .fa-chevron-up {
+  position: absolute;
+  right: 1.5rem;
   cursor: pointer;
+  -webkit-transition: ease-out all 300ms;
+  transition: ease-out all 300ms;
+}
+
+.card .card-body .fa-chevron-up:hover {
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+}
+
+.card .card-body .detail-buttons {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.card .card-img-top {
+  height: 100%;
+  cursor: pointer;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: .25rem;
   -webkit-transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 170ms;
   transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 170ms;
 }
 
-.card-img-top:hover {
+.card .card-img-top:hover {
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
+}
+
+.card .box-buttons {
+  width: 100%;
+  padding-bottom: 1rem;
 }
 /*# sourceMappingURL=Item.css.map */
