@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export default function Item({ id, title, image, price, description, stock }) {
   const [show, setShow] = useState();
-    
 
   return (
     <>
@@ -14,14 +13,14 @@ export default function Item({ id, title, image, price, description, stock }) {
           show ? <div className="card-body d-flex flex-column">
                   <p className="card-title">{title}</p>
                   <span className="price">{price}</span>
-                  <i className="fa-solid fa-chevron-down" onClick={()=> setShow(!show)}></i>
+                  <i className="fa-solid fa-chevron-up" onClick={()=> setShow(!show)}></i>
                   <hr />
                   <p className='card-text'>{description}</p>
-                  <div className="d-flex justify-content-between align-items-center">
+                  <div className="d-flex align-items-center detail-buttons">
                     <Counter initial={0} stock={stock}/>
-                    <button className='btn btn-warning'><i className="fa-solid fa-cart-plus me-2"></i>Add to Cart</button>
+                    <button className='btn btn-warning ms-4'><i className="fa-solid fa-cart-plus me-2"></i>Add to Cart</button>
                   </div>
-                </div> : ''
+                </div> : null
         }
         <div className="d-flex justify-content-center align-items-center position-absolute bottom-0 box-buttons">
         {

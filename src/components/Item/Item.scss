@@ -6,16 +6,30 @@
 
     .card-body{
         background-color: $bg-color-blur--primary;
-        backdrop-filter: blur(10px);
+        height: 60%;
+        backdrop-filter: blur(5px);
         position: absolute;
         width: 100%;
         bottom: 0;
         color: $txt-color--primary;
+        box-shadow: $box-shadow;
+        border-radius: .25rem .25rem 0 0;
 
-        .fa-chevron-down{
+        .fa-chevron-up{
             position: absolute;
             right: 1.5rem;
             cursor: pointer;
+            transition: ease-out all 300ms;
+            
+            &:hover{
+                transform: rotateZ(180deg);
+            }
+        }
+        .detail-buttons{
+            position: absolute;
+            bottom: 1rem;
+            width: 100%;
+            box-sizing: border-box;
         }
     }
     .card-img-top{
