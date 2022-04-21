@@ -12,21 +12,17 @@ export default function ItemListContainer({title}) {
       .catch((err) => console.log(err));
   }, []);
 
-  // const onAdd = (operador) => {
-  //   if (operador === "+") {
-  //     setCount(count + 1);
-  //   }
-  //   if (operador === "-") {
-  //     setCount(count - 1);
-  //   }
-  // };
+  const style = {
+    marginTop: '6rem',
+    marginBottom: '2rem'
+  }
 
   return (
     <>
-      <div className="container">
-        <h2 className='title mb-5' style={{marginTop: '12rem'}}>{title}</h2>
+      <div className="container pb-5">
+        <h2 className='title' style={style}>{title}</h2>
+        <ItemList products={products}/>
       </div>
-      <ItemList products={products}/>
     </>
   )
 }

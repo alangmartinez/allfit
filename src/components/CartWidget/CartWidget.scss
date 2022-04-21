@@ -1,3 +1,5 @@
+@import './../../variables';
+
 .cart-widget{
     order: 3;
     margin-right: .5rem;
@@ -6,11 +8,12 @@
     position: fixed;
     bottom: 3rem;
     right: 3rem;
-    background-color: rgba($color: #fff, $alpha: .9);
+    background-color: $bg-color-bulr--secondary;
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
     backdrop-filter: blur(5px);
+    box-shadow: $box-shadow;
     z-index: 10;
 
     .fa-cart-shopping{

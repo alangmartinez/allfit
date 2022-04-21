@@ -7,19 +7,29 @@
     padding: 0 4rem;
     order: 2;
 
-    .list-item{
+    .link{
+        text-decoration: none;
         color: $txt-color--primary;
-        cursor: pointer;
-        font-size: 1.2rem;
-        display: flex;
-        flex-direction: column;
-        position: relative;
+        padding: 1rem 0;
 
         &:hover{
-            opacity: .5;
+            border-bottom: 2px solid #fff;
         }
-        &:active{
-            opacity: .5;
+
+        .list-item{
+            color: $txt-color--primary;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            &:hover{
+                opacity: .5;
+            }
+            &:active{
+                opacity: .5;
+            }
         }
     }
 }
