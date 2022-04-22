@@ -25,6 +25,14 @@
                 transform: rotateZ(180deg);
             }
         }
+        .card-title{
+            width: 85%;
+            word-wrap: wrap;
+            font-size: 1.2rem;
+        }
+        .card-text{
+            font-size: .98rem;
+        }
         .detail-button-container{
             position: absolute;
             bottom: 1rem;

@@ -1,1 +1,10 @@
-{"version":3,"sources":["ItemDetailContainer.scss","../../_variables.scss","ItemDetailContainer.css"],"names":[],"mappings":"AAEA;EACI,cCDiB;EDEjB,iBAAA;AEDJ","file":"ItemDetailContainer.css"}
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,iBAAiB,CAAA;EACb,KAAK,ECDY,OAAO;EDExB,SAAS,EAAE,MAAM;EACjB,MAAM,EAAE,OAAO;EACf,OAAO,EAAE,MAAM;CAKlB;;AATD,AAMI,iBANa,AAMZ,MAAM,CAAA;EACH,KAAK,EAAE,OAAkB;CAC5B",
+    "sources": [
+        "ItemDetailContainer.scss",
+        "../../_variables.scss"
+    ],
+    "names": [],
+    "file": "ItemDetailContainer.css"
+}

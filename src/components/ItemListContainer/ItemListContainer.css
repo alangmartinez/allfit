@@ -1,6 +1,6 @@
 .title {
   color: #fff;
-  font-family: "Bebas Neue", cursive;
+  font-family: 'Bebas Neue', cursive;
   font-size: 3.7rem;
   text-align: center;
   text-shadow: 2px 4px 5px #000000;
@@ -8,4 +8,5 @@
 
 .data {
   color: #fff;
-}/*# sourceMappingURL=ItemListContainer.css.map */
+}
+/*# sourceMappingURL=ItemListContainer.css.map */

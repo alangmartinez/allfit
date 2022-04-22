@@ -5,7 +5,8 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .detail-container {
@@ -16,15 +17,21 @@
   border-radius: 0.25rem;
   height: auto;
   padding: 2.5rem;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  border: 1px solid #757575;
 }
+
 .detail-container .detail-header .title {
   text-align: start;
 }
+
 .detail-container .detail-header .price {
   font-size: 1.3rem;
 }
+
 .detail-container .detail-body {
   color: #f9f9f9;
-  font-size: 1.32rem;
-}/*# sourceMappingURL=ItemDetail.css.map */
+  font-size: 1.17rem;
+}
+/*# sourceMappingURL=ItemDetail.css.map */

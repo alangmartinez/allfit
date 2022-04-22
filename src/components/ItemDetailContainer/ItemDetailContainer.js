@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from 'react-router-dom';
 import './ItemDetailContainer.css';
+import { Link } from 'react-router-dom';
 
 export default function ItemListDetail() {
   const [product, setProduct] = useState();
@@ -13,22 +14,14 @@ export default function ItemListDetail() {
             .then(product => setProduct(product))
     },[])
 
-    const style = {
-      color: '#fff',
-      fontSize: '1.5rem',
-      marginBottom: '1.5rem'
-    }
-    const homeIcon = {
-      lineHeight: 'unset'
-    }
-
   return (
     <>
       {
         <div className='container py-4'>
-          <div className='container goBack-cotainer' style={style}>
-            <i className="fa-solid fa-house me-2" style={homeIcon}></i> Go Home
-          </div>
+          <Link to='/' className='container goBack-container'>
+            <i className="fa-solid fa-chevron-left me-2"></i>
+            <i className="fa-solid fa-house me-2"></i>
+          </Link>
           <ItemDetail {...product}/>
         </div>
       }

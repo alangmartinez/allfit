@@ -1,4 +1,11 @@
 .goBack-container {
   color: #f9f9f9;
-  font-size: 1.2rem;
-}/*# sourceMappingURL=ItemDetailContainer.css.map */
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: inline;
+}
+
+.goBack-container:hover {
+  color: #6e6e6e;
+}
+/*# sourceMappingURL=ItemDetailContainer.css.map */

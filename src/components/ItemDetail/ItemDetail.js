@@ -5,7 +5,7 @@ export default function ItemDetail({title, description, price, stock, image}) {
 
     return (
         <>
-            <div className='row gap-3'>
+            <div className='d-flex justify-content-center gap-3 flex-wrap mt-4'>
                 <picture className='col-3'>
                     <img className='fluid-img img-product' src={image}></img>
                 </picture>

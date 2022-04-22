@@ -2,13 +2,20 @@
   color: #fff;
   font-size: 1.1rem;
   cursor: pointer;
-  order: 3;
-  align-self: center;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
+
 .login:hover {
-  opacity: 0.5;
+  opacity: .5;
 }
+
 .login .fa-arrow-right-to-bracket {
   font-size: 1.3rem;
   line-height: unset;
-}/*# sourceMappingURL=Login.css.map */
+}
+/*# sourceMappingURL=Login.css.map */

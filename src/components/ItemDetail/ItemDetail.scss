@@ -16,6 +16,7 @@
     height: auto;
     padding: 2.5rem;
     box-shadow: $box-shadow;
+    border: 1px solid #757575;
     
     .detail-header{
         .title{
@@ -25,8 +26,8 @@
             font-size: 1.3rem;
         }
     }
-    .detail-body{
+    .detail-body{   
         color: $txt-color--primary;
-        font-size: 1.32rem;
+        font-size: 1.17rem;
     }
 }

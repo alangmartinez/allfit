@@ -2,5 +2,11 @@
 
 .goBack-container{
     color: $txt-color--primary;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: inline;
+
+    &:hover{
+        color: rgb(110, 110, 110);
+    }
 }

@@ -1,1 +1,9 @@
-{"version":3,"sources":["WhatsApp.scss","WhatsApp.css"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,UAAA;ACCJ","file":"WhatsApp.css"}
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,mBAAmB,CAAA;EACf,MAAM,EAAE,IAAI;EACZ,IAAI,EAAE,IAAI;CACb",
+    "sources": [
+        "WhatsApp.scss"
+    ],
+    "names": [],
+    "file": "WhatsApp.css"
+}
