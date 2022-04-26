@@ -1,5 +1,5 @@
 import "./Menu.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { getCategorys } from "../../asyncmock";
 import { useEffect, useState } from "react";
 
@@ -17,13 +17,13 @@ export default function Menu() {
           <li className="list-item">Home</li>
         </Link>
         {categorys.map((category) => (
-          <Link
+          <NavLink
             key={category.id}
             to={`/category/${category.id}`}
-            className='link'
+            className={({isActive}) => isActive ? 'active' : 'link'}
           >
             <li className="list-item">{category.description}</li>
-          </Link>
+          </NavLink>
         ))}
         <Link to="/sale" className="link">
           <li className="list-item">Sale</li>

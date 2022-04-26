@@ -39,11 +39,17 @@
 .main{
   margin-top: 4rem;
 }
+.title-container {
+  padding:  3rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .title{
   color: #fff;
   font-family: 'Bebas Neue', cursive;
   font-size: 3.7rem;
   text-align: center;
   text-shadow: 2px 4px 5px #000000;
-  padding:  3rem 0;
+  display: inline-block;
 }

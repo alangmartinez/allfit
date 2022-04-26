@@ -32,11 +32,11 @@
   position: relative;
 }
 
-.list .link .list-item:hover {
-  opacity: .5;
-}
-
-.list .link .list-item:active {
-  opacity: .5;
+.list .active {
+  text-decoration: none;
+  color: #f9f9f9;
+  padding: 1rem 0;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #fff;
 }
 /*# sourceMappingURL=Menu.css.map */

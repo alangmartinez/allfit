@@ -68,6 +68,60 @@ export const products = [
     stock: 10,
     category: "woman",
   },
+  {
+    id: 5,
+    title: "Remera Nike FUTURA",
+    price: "$6.999",
+    talles: {
+      xs: true,
+      s: true,
+      m: true,
+      l: false,
+      xl: false,
+    },
+    image:
+    'https://essential.vteximg.com.br/arquivos/ids/513061-454-423/302-0644_1.jpg?v=637783188318230000',
+    description:
+      "La playera Nike Sportswear tiene un calce holgado para una sensación casual y cómoda. Su construcción de algodón para todos los días presenta un estampado Futura que está acentuado por un diseño de logotipo nacarado en relieve en el centro del pecho.",
+    stock: 10,
+    category: "woman",
+  },
+  {
+    id: 6,
+    title: "Remera Nike SWOOSH 50",
+    price: "$6.299",
+    talles: {
+      xs: true,
+      s: true,
+      m: true,
+      l: false,
+      xl: false,
+    },
+    image:
+    'https://essential.vteximg.com.br/arquivos/ids/544148-1000-1000/302-0661_1.jpg?v=637850384184670000',
+    description:
+    'La camiseta Nike Sportswear rinde homenaje al logotipo de Nike con un gráfico estampado con bordado de puntadas de satén. El ajuste clásico y el algodón de todos los días brindan una sensación familiar desde el primer momento.',
+    stock: 10,
+    category: "man",
+  },
+  {
+    id: 7,
+    title: "Remera Nike FUTURA",
+    price: "$6.999",
+    talles: {
+      xs: true,
+      s: true,
+      m: true,
+      l: false,
+      xl: false,
+    },
+    image:
+    'https://essential.vteximg.com.br/arquivos/ids/513057-454-423/302-0643_1.jpg?v=637783186803600000',
+    description:
+    'La playera Nike Sportswear tiene un calce holgado para una sensación casual y cómoda. Su construcción de algodón para todos los días presenta un estampado Futura que está acentuado por un diseño de logotipo nacarado en relieve en el centro del pecho.',
+    stock: 10,
+    category: "woman",
+  },
 ];
 
 const categorys = [

@@ -3,56 +3,40 @@
 .card{
     height: 29rem;
     border: none;
+    position: relative;
+    cursor: pointer;
 
-    .card-body{
-        background-color: $bg-color-blur--primary;
-        height: 60%;
-        backdrop-filter: blur(5px);
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-        color: $txt-color--primary;
-        box-shadow: $box-shadow;
-        border-radius: .25rem .25rem 0 0;
-
-        .fa-chevron-up{
-            position: absolute;
-            right: 1.5rem;
-            cursor: pointer;
-            transition: ease-out all 300ms;
-            
-            &:hover{
-                transform: rotateZ(180deg);
-            }
-        }
-        .card-title{
-            width: 85%;
-            word-wrap: wrap;
-            font-size: 1.2rem;
-        }
-        .card-text{
-            font-size: .98rem;
-        }
-        .detail-button-container{
-            position: absolute;
-            bottom: 1rem;
-            width: 100%;
-            box-sizing: border-box;
-        }
+    &:hover .backface {
+        opacity: 1;
     }
+    &:hover .card-img-top {
+        filter: grayscale(100%);
+    }
+
     .card-img-top{
         height: 100%;
         cursor: pointer;
         object-fit: cover;
-        border-radius: .25rem;
+        border-radius: $border-radius;
         transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 170ms;
-    
-        &:hover{
-            filter: grayscale(100%);
-        }
     }
-    .box-buttons{
+    .backface {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         width: 100%;
-        padding-bottom: 1rem;
+        height: 100%;
+        border-radius: $border-radius;
+        opacity: 0;
+        position: absolute;
+        transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 900ms;
+
+        .seeMore-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
 }

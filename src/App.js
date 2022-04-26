@@ -9,24 +9,18 @@ export default function App() {
     <BrowserRouter>
       <NavBar />
       <main className="main">
-        <Link to="/">
-          <h2 className="title">Wellcome to All Fit</h2>
-        </Link>
+        <div className="title-container">
+          <Link to="/">
+            <h2 className="title">Wellcome to All Fit</h2>
+          </Link>
+        </div>
         <Routes>
           <Route path="/" element={<ItemListContainer />}></Route>
-          <Route
-            path="/category/:categoryId"
-            element={<ItemListContainer />}
-          ></Route>
+          <Route path="/category/:categoryId" element={<ItemListContainer />}></Route>
           <Route path="/sale"></Route>
           <Route path="/contact-us"></Route>
-          <Route
-            path="/detail/:productId"
-            element={<ItemDetailContainer />}
-          ></Route>
-          <Route
-            path="*"
-            element={
+          <Route path="/detail/:productId" element={<ItemDetailContainer />}></Route>
+          <Route path="*" element={
               <div className="container">
                 <h2 className="title">Nothing Found</h2>
               </div>
