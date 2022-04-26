@@ -19,7 +19,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-a{
+a {
   text-decoration: none;
+  color: #f9f9f9;
+}
+a:hover {
+  color: #f9f9f9;
+}
+a:active {
+  color: #f9f9f9;
+}
+a:focus {
   color: #f9f9f9;
 }
