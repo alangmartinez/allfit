@@ -1,16 +1,23 @@
+import { useState } from 'react';
 import './searchInput.css'
 
-export default function SearchInput({handleOnKeyDownSearch}) {
+export default function SearchInput() {
+    const [show, setShow] = useState(false);
 
-    const search = ()=>{
-        const searchInput = document.getElementById('search-input');
-        searchInput.value = '';
+    const handleOnKeyDownSearch = (e)=> {
+        console.log(e);
+        if(e.target.value.length >= 3) {
+            console.log(e.target.value.replace(/\s+/g, ''));
+            if (e.code == 'Enter') {
+                console.log('Enviado')
+            }
+        }
     }
 
   return (
     <>
         <div className="d-flex justify-content-center align-items-center">
-            <i className="fa-solid fa-magnifying-glass" onClick={search}></i>
+            <i className="fa-solid fa-magnifying-glass" onClick={() => setShow(!show)}></i>
             <input 
                 type="text"
                 className="search-input form-control col-md"

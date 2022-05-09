@@ -17,10 +17,10 @@ export default function ItemListDetail() {
   return (
     <>
       {
-        <div className='container py-4'>
+        <div className='container pb-4'>
           <Link to='/' className='container goBack-container'>
             <i className="fa-solid fa-chevron-left me-2"></i>
-            <i className="fa-solid fa-house me-2"></i>
+            Go Home
           </Link>
           <ItemDetail {...product}/>
         </div>

@@ -1,23 +1,17 @@
-import {useState, useEffect} from 'react';
-import './Counter.css';
+import { useState } from "react";
+import "./Counter.css";
 
-export default function Counter({initial, stock, onAdd}) {
-    const [count, setCount] = useState(initial);
+export default function Counter({ initial, stock }) {
+  const [count, setCount] = useState(initial);
 
-    useEffect(() => {
-      console.log("Se ha montado el componente !");
-    }, []);
-
-    const increase = () => {
-      if (count < stock) {
-        setCount(count + 1);
-      }
-    };
-    const decrease = () => {
-      if (count > 0) setCount(count - 1);
-    };
-
-    console.log("Se va a montar el componente");
+  const increase = () => {
+    if (count < stock) {
+      setCount(count + 1);
+    }
+  };
+  const decrease = () => {
+    if (count > 0) setCount(count - 1);
+  };
 
   return (
     <>
@@ -25,9 +19,7 @@ export default function Counter({initial, stock, onAdd}) {
         <button className="btn btn-outline-warning" onClick={decrease}>
           -
         </button>
-        <span className="count">
-          {count}
-        </span>
+        <span className="count">{count}</span>
         <button
           className={
             count == stock
@@ -38,8 +30,10 @@ export default function Counter({initial, stock, onAdd}) {
         >
           +
         </button>
+        <button className="btn btn-warning col-7 py-2 ms-2">
+          <i className="fa-solid fa-cart-plus me-2"></i>Add to Cart
+        </button>
       </div>
     </>
   );
 }
-

@@ -14,7 +14,7 @@ export default function navBar() {
     <>
       <nav className="nav-bar position-fixed d-flex px-4">
         <Menu />
-        <SearchInput  handleOnKeyDownSearch={handleSearch}/>
+        <SearchInput />
         <Login />
       </nav>
     </>
