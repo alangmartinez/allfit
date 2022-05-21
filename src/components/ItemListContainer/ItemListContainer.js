@@ -37,7 +37,7 @@ export default function ItemListContainer() {
 
   return (
     <>
-      <div className="container pb-5" onClick={(e)=> { console.log('Hiciste click en el ItemListContainer')}}>
+      <div className="container pb-5 item-list-container" onClick={(e)=> { console.log('Hiciste click en el ItemListContainer')}}>
         {loading ? (
           <div
             className="d-flex justify-content-center align-items-center"

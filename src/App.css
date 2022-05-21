@@ -53,3 +53,9 @@
   text-shadow: 2px 4px 5px #000000;
   display: inline-block;
 }
+::-webkit-scrollbar {
+  background-color: none;
+}
+::-webkit-scrollbar-thumb {
+  width: 15px;
+}

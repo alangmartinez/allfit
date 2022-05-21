@@ -13,6 +13,11 @@
         filter: grayscale(100%);
     }
 
+    .identifier {
+        top: .6rem;
+        left: .6rem;
+        background-color: #ffc107;
+    }
     .card-img-top{
         height: 100%;
         cursor: pointer;

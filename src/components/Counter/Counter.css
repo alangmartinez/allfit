@@ -1,4 +1,10 @@
 .count {
   color: #f9f9f9;
 }
+
+.vertical-aligned {
+  height: 42px;
+  line-height: 42px;
+  color: #f9f9f9;
+}
 /*# sourceMappingURL=Counter.css.map */

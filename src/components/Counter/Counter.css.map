@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,MAAM,CAAA;EACF,KAAK,ECDY,OAAO;CDE3B",
+    "mappings": "AAEA,AAAA,MAAM,CAAA;EACF,KAAK,ECDY,OAAO;CDE3B;;AACD,AAAA,iBAAiB,CAAA;EACb,MAAM,EAAE,IAAI;EACZ,WAAW,EAAE,IAAI;EACjB,KAAK,ECNY,OAAO;CDO3B",
     "sources": [
         "Counter.scss",
         "../../_variables.scss"

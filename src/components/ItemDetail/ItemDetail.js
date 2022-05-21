@@ -1,59 +1,86 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import CustomContext from "../../context/ContextCart";
 import AddFavoriteModal from "../AddFavoriteModal/AddFavoriteModal";
 import RemoveFavoriteModal from "../RemoveFavoriteModal/RemoveFavoriteModal";
 import Counter from "./../Counter/Counter";
 import "./ItemDetail.css";
 
 export default function ItemDetail({
+  id,
   title,
   description,
   price,
   stock,
   image,
-  talles = [],
+  sizes,
 }) {
   const [favorite, setFavorite] = useState(false);
   const [showFav, setShowFav] = useState(false);
   const [showRemoveFav, setShowRemoveFav] = useState(false);
+  const [quantity, setQuantity] = useState(0);
+  const [size, setSize] = useState();
+  const { addProduct } = useContext(CustomContext);
+  console.log(addProduct)
 
-  const handleModal = () => {
-    setShowFav(!showFav);
-    setTimeout(()=>{
-      setShowFav(false);
-    },1500)
+  // onAdd function is for the Counter component.
+  const onAdd = (count) => {
+    setQuantity(count);
+
+    const product = {
+      id,
+      title,
+      size,
+      image,
+      quantity: quantity,
+    };
   };
 
-  const handleRemoveFav = ()=> {
-    setShowRemoveFav(!showRemoveFav);
-    setTimeout(()=>{
-      setShowRemoveFav(false);
-    },1500)
-  }
+  // Changing the state of an alert to display it.
+  const handleModal = () => {
+    setShowFav(!showFav);
+    setTimeout(() => {
+      setShowFav(false);
+    }, 1500);
+  };
 
-  const Select = ({ talles = [] }) => {
+  // Changing the state of an alert to display it.
+  const handleRemoveFav = () => {
+    setShowRemoveFav(!showRemoveFav);
+    setTimeout(() => {
+      setShowRemoveFav(false);
+    }, 1500);
+  };
+
+
+  // Select Component
+  const Select = ({ sizes = [] }) => {
+
     return (
       <>
         <label className="d-block px-0 mb-2">Talles :</label>
         <div className="d-flex gap-3 px-0">
-          {talles.map((talle) => (
+          {sizes.map((size) => (
             <button
-              key={talle.id}
+              key={size.id}
               className="btn btn-outline-warning px-1 shadow-lg"
               style={{
                 width: "2.2rem",
                 fontSize: "13px",
                 textAlignCenter: "center",
               }}
+              onClick={ (e)=> {
+                setSize(size.size);
+              }
+              }
             >
-              {talle.size}
+              {size.size}
             </button>
           ))}
         </div>
       </>
     );
   };
-
-  console.log(talles);
 
   return (
     <>
@@ -89,10 +116,17 @@ export default function ItemDetail({
           <hr />
           <div className="detail-body mb-5 px-3 row">
             <p className="description p-0">{description}</p>
-            <Select talles={talles}></Select>
+            <Select sizes={sizes}></Select>
           </div>
-          <div className="detail-footer d-flex gap-4 justify-content-end">
-            <Counter initial={0} stock={stock}></Counter>
+          <div className="detail-footer d-flex gap-4">
+            {quantity > 0 ? (
+              <Link to="/cart" className="btn btn-warning">
+                <i className="fa-solid fa-circle-right me-2"></i>
+                Go to Cart
+              </Link>
+            ) : (
+              <Counter initial={0} stock={stock} onAdd={onAdd}></Counter>
+            )}
           </div>
         </div>
       </div>

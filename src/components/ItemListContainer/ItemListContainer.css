@@ -1,3 +1,7 @@
+.item-list-container {
+  z-index: 10;
+}
+
 .data {
   color: #fff;
 }

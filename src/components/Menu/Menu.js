@@ -12,7 +12,7 @@ export default function Menu() {
 
   return (
     <>
-      <ul className="list d-flex justify-content-end align-items-center ms-auto">
+      <ul className="list d-flex justify-content-end align-items-center">
         <Link to="/" className="link">
           <li className="list-item">Home</li>
         </Link>

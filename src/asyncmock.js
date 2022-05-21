@@ -3,7 +3,7 @@ export const products = [
     id: 1,
     title: "Remera Nike Swoosh 50",
     price: "$6.299",
-    talles: [
+    sizes: [
       { size: 'XS', available: false, id: 1 },
       { size: 'S', available: true, id: 2 },
       { size: 'M', available: true, id: 3 },
@@ -16,12 +16,13 @@ export const products = [
       "La camiseta Nike Sportswear rinde homenaje al logotipo de Nike con un gráfico estampado con bordado de puntadas de satén.",
     stock: 11,
     category: "man",
+    newModel: false,
   },
   {
     id: 2,
     title: "Remera Nike Fantasy",
     price: "$6.299",
-    talles: [
+    sizes: [
       { size: 'XS', available: false, id: 1 },
       { size: 'S', available: true, id: 2 },
       { size: 'M', available: true, id: 3 },
@@ -34,12 +35,13 @@ export const products = [
       "REMERA NIKE NSW ICON CLASH De Moda Para Mujer Código: DC5294-615.",
     stock: 10,
     category: "woman",
+    newModel: false,
   },
   {
     id: 5,
     title: "Remera Nike FUTURA",
     price: "$6.999",
-    talles: [
+    sizes: [
       { size: 'XS', available: false, id: 1 },
       { size: 'S', available: true, id: 2 },
       { size: 'M', available: true, id: 3 },
@@ -52,12 +54,13 @@ export const products = [
       "La playera Nike Sportswear tiene un calce holgado para una sensación casual y cómoda. Su construcción de algodón para todos los días presenta un estampado Futura que está acentuado por un diseño de logotipo nacarado en relieve en el centro del pecho.",
     stock: 10,
     category: "woman",
+    newModel: true,
   },
   {
     id: 6,
     title: "Remera Nike SWOOSH 50",
     price: "$6.299",
-    talles: [
+    sizes: [
       { size: 'XS', available: false, id: 1 },
       { size: 'S', available: true, id: 2 },
       { size: 'M', available: true, id: 3 },
@@ -70,12 +73,13 @@ export const products = [
     'La camiseta Nike Sportswear rinde homenaje al logotipo de Nike con un gráfico estampado con bordado de puntadas de satén. El ajuste clásico y el algodón de todos los días brindan una sensación familiar desde el primer momento.',
     stock: 10,
     category: "man",
+    newModel: false,
   },
   {
     id: 7,
     title: "Remera Nike FUTURA",
     price: "$6.999",
-    talles: [
+    sizes: [
       { size: 'XS', available: false, id: 1 },
       { size: 'S', available: true, id: 2 },
       { size: 'M', available: true, id: 3 },
@@ -88,6 +92,7 @@ export const products = [
     'La playera Nike Sportswear tiene un calce holgado para una sensación casual y cómoda. Su construcción de algodón para todos los días presenta un estampado Futura que está acentuado por un diseño de logotipo nacarado en relieve en el centro del pecho.',
     stock: 10,
     category: "woman",
+    newModel: true,
   },
 ];
 
