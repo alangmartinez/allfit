@@ -3,19 +3,30 @@ import { createContext, useState } from "react";
 
 const CustomContext = createContext();
 
-export const CustomContextProvider = ({childrensComponents}) => {
+export const CustomContextProvider = ({ childrens }) => {
     let [cart, setCart] = useState([]);
-
-    // Function to remove a product from the cart.
-    const removeProduct = (productToRemove) => {
-       cart =  cart.filter(product => product.id !== productToRemove.id)
-    }
 
     // Function to add a product to the cart.
     const addProduct = (productToAdd) => { 
-        setCart([...cart, productToAdd]);
+        if(isAlreadyInCart(productToAdd.id)){
+            setCart([...cart, {productToAdd, quantity: quantity}])
+        } else {
+            setCart([...cart, productToAdd]);
+        }
     }
 
+    // Function to remove a product from the cart.
+    const removeProduct = (productToRemove) => {
+        const filteredCart = cart.filter((product) => product.id !== productToRemove.id)
+        setCart(filteredCart);
+    }
+
+    // Check if the product is already in the cart.
+    const isAlreadyInCart = (id) => {
+        cart.find((product) => product.id === id )
+    }
+
+    // Function to get the quantity of products in the cart.
     const getQuantity = () => {
         let count = 0;
         cart.forEach((product) => {
@@ -24,13 +35,11 @@ export const CustomContextProvider = ({childrensComponents}) => {
         return count;
     }
 
-    // If the product to add is already on the cart, increase the quantity.
-
 
     return(
         <>
-            <CustomContext.Provider value={{ cart, addProduct, getQuantity }}>
-                {childrensComponents}
+            <CustomContext.Provider value={{ cart, addProduct, getQuantity, removeProduct }}>
+                { childrens }
             </CustomContext.Provider>
         </>
     );
