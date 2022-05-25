@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import CustomContext from "../../context/ContextCart";
+import { useState, useContext, useEffect } from "react";
 import AddFavoriteModal from "../AddFavoriteModal/AddFavoriteModal";
 import RemoveFavoriteModal from "../RemoveFavoriteModal/RemoveFavoriteModal";
 import Counter from "./../Counter/Counter";
 import "./ItemDetail.css";
+import { CartContext } from "../../context/CartContext";
 
 export default function ItemDetail({
   id,
@@ -18,22 +17,27 @@ export default function ItemDetail({
   const [favorite, setFavorite] = useState(false);
   const [showFav, setShowFav] = useState(false);
   const [showRemoveFav, setShowRemoveFav] = useState(false);
-  const [quantity, setQuantity] = useState(0);
   const [size, setSize] = useState();
-  const { addProduct } = useContext(CustomContext);
-  console.log(addProduct)
+
+  const { cart, addProduct, removeProduct } = useContext(CartContext);
+
+
+  useEffect(()=> {
+    console.log(cart);
+  }, [cart])
 
   // onAdd function is for the Counter component.
   const onAdd = (count) => {
-    setQuantity(count);
-
+    console.log(count);
     const product = {
       id,
       title,
       size,
       image,
-      quantity: quantity,
+      price,
+      quantity: count,
     };
+    addProduct(product);
   };
 
   // Changing the state of an alert to display it.
@@ -52,29 +56,26 @@ export default function ItemDetail({
     }, 1500);
   };
 
-
   // Select Component
   const Select = ({ sizes = [] }) => {
-
     return (
       <>
         <label className="d-block px-0 mb-2">Talles :</label>
         <div className="d-flex gap-3 px-0">
-          {sizes.map((size) => (
+          {sizes.map((item) => (
             <button
-              key={size.id}
+              key={item.id}
               className="btn btn-outline-warning px-1 shadow-lg"
               style={{
                 width: "2.2rem",
                 fontSize: "13px",
                 textAlignCenter: "center",
               }}
-              onClick={ (e)=> {
-                setSize(size.size);
-              }
-              }
+              onClick={() => {
+                setSize({...item, size: size});
+              }}
             >
-              {size.size}
+              {item.size}
             </button>
           ))}
         </div>
@@ -119,14 +120,7 @@ export default function ItemDetail({
             <Select sizes={sizes}></Select>
           </div>
           <div className="detail-footer d-flex gap-4">
-            {quantity > 0 ? (
-              <Link to="/cart" className="btn btn-warning">
-                <i className="fa-solid fa-circle-right me-2"></i>
-                Go to Cart
-              </Link>
-            ) : (
-              <Counter initial={0} stock={stock} onAdd={onAdd}></Counter>
-            )}
+            <Counter initial={0} stock={stock} onAdd={onAdd}></Counter>
           </div>
         </div>
       </div>

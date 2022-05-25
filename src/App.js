@@ -4,13 +4,16 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Footer from "./components/Footer/Footer";
-import { CustomContextProvider } from "./context/ContextCart";
+import CartContextProvider from "./context/CartContext";
+import Cart from "./components/Cart/Cart";
 
 export default function App() {
   return (
-    <CustomContextProvider>
+    <CartContextProvider>
       <BrowserRouter>
-        <NavBar />
+        <header>
+          <NavBar />
+        </header>
         <main className="main">
           <div className="title-container">
             <Link to="/">
@@ -29,14 +32,7 @@ export default function App() {
               path="/detail/:productId"
               element={<ItemDetailContainer></ItemDetailContainer>}
             ></Route>
-            <Route
-              path="/cart"
-              element={
-                <div className="container d-flex justify-content-center align-items-center">
-                  <h2 className="title">404 - Nothing Found</h2>
-                </div>
-              }
-            ></Route>
+            <Route path="/cart" element={<Cart/>}></Route>
             <Route
               path="*"
               element={
@@ -47,8 +43,8 @@ export default function App() {
             />
           </Routes>
         </main>
-        <Footer></Footer>
+        <Footer />
       </BrowserRouter>
-    </CustomContextProvider>
+    </CartContextProvider>
   );
 }
