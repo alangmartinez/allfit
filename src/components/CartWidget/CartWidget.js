@@ -12,8 +12,8 @@ export default function CartWidget() {
         to="/cart"
         className="cart-widget d-flex justify-content-center align-items-center px-2 ms-auto me-3"
       >
-        <i className="fa-solid fa-cart-shopping"></i>
-        <span className="quantity ms-2">
+        <i className="fa-solid fa-cart-shopping shadow"></i>
+        <span className="quantity ms-2 shadow">
           {getQuantity() === 0 ? null : getQuantity()}
         </span>
       </Link>

@@ -4,6 +4,7 @@ import RemoveFavoriteModal from "../RemoveFavoriteModal/RemoveFavoriteModal";
 import Counter from "./../Counter/Counter";
 import "./ItemDetail.css";
 import { CartContext } from "../../context/CartContext";
+import { Link } from "react-router-dom";
 
 export default function ItemDetail({
   id,
@@ -18,17 +19,17 @@ export default function ItemDetail({
   const [showFav, setShowFav] = useState(false);
   const [showRemoveFav, setShowRemoveFav] = useState(false);
   const [size, setSize] = useState();
+  const [quantity, setQuantity] = useState(0);
 
-  const { cart, addProduct, removeProduct } = useContext(CartContext);
+  const { cart, addProduct } = useContext(CartContext);
 
-
-  useEffect(()=> {
+  useEffect(() => {
     console.log(cart);
-  }, [cart])
+  }, [cart]);
 
   // onAdd function is for the Counter component.
   const onAdd = (count) => {
-    console.log(count);
+    setQuantity(count);
     const product = {
       id,
       title,
@@ -72,7 +73,7 @@ export default function ItemDetail({
                 textAlignCenter: "center",
               }}
               onClick={() => {
-                setSize({...item, size: size});
+                setSize({ ...item, size: size });
               }}
             >
               {item.size}
@@ -120,7 +121,11 @@ export default function ItemDetail({
             <Select sizes={sizes}></Select>
           </div>
           <div className="detail-footer d-flex gap-4">
-            <Counter initial={0} stock={stock} onAdd={onAdd}></Counter>
+            {quantity > 0 ? (
+              <Link to='/cart' className="btn btn-warning">Go to Cart</Link>
+            ) : (
+              <Counter initial={0} stock={stock} onAdd={onAdd}></Counter>
+            )}
           </div>
         </div>
       </div>

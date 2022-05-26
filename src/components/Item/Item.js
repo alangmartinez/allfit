@@ -1,5 +1,6 @@
 import "./Item.css";
 import { Link } from "react-router-dom";
+import styled from 'styled-components';
 
 export default function Item({ id, title, image, newModel }) {
   const handleClick = (e) => {
@@ -15,17 +16,11 @@ export default function Item({ id, title, image, newModel }) {
         key={id}
       >
         {newModel ? (
-          <span
-            className="position-absolute px-3 shadow-lg rounded-1"
-            style={{
-              backgroundColor: "#ffc107",
-              top: ".7rem",
-              left: ".7rem",
-              fontSize: ".9rem",
-            }}
+          <NewModel
+            className="px-3 shadow rounded-1"
           >
             NEW
-          </span>
+          </NewModel>
         ) : null}
         <img src={image} className="card-img-top img-fluid" alt={title} />
         <div className="backface">
@@ -41,3 +36,12 @@ export default function Item({ id, title, image, newModel }) {
     </>
   );
 }
+
+const NewModel = styled.span`
+  position: absolute;
+  top: .7rem;
+  left: .7rem;
+  font-size: .9rem;
+  background-color: #ffc107;
+  z-index: 30;
+`

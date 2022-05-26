@@ -48,6 +48,9 @@ export const CartContextProvider = ({ children }) => {
     localStorage.setItem(key, JSON.stringify(value));
   };
 
+  // Update the stock after have been added to cart
+  
+
   return (
     <>
       <CartContext.Provider

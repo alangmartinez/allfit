@@ -10,7 +10,9 @@ export default function Cart() {
     <>
       <div className="container">
         <CartContainer className="shadow rounded-2">
-          <CartTitle><i className="fa-solid fa-cart-shopping me-2"></i>Cart :</CartTitle>
+          <CartTitle>
+            <i className="fa-solid fa-cart-shopping me-2"></i>Cart :
+          </CartTitle>
           <Hr></Hr>
           {cart.map((product) => {
             return (
@@ -24,8 +26,10 @@ export default function Cart() {
                 <ProductTitle>{product.title}</ProductTitle>
                 <ProductQuantity>{product.quantity}</ProductQuantity>
                 <ProductPrice>{product.price}</ProductPrice>
-                
-                  <TrashIcon className="fa-solid fa-trash shadow" onClick={() => removeProduct(product.id)}></TrashIcon>
+                <TrashIcon
+                  className="fa-solid fa-trash shadow"
+                  onClick={() => removeProduct(product.id)}
+                ></TrashIcon>
               </ProductContainer>
             );
           })}
@@ -54,20 +58,21 @@ const CartTitle = styled.h2`
   line-height: 1.2rem;
   font-size: 1.2rem;
   letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
 `;
 const Hr = styled.hr`
-    color: #f9f9f9;
-    opacity: 1;
-    margin: 0;
-    margin-bottom: .25rem;
-`
+  color: #f9f9f9;
+  opacity: 1;
+  margin: 0;
+  margin-bottom: 0.25rem;
+`;
 const ProductContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
   height: 5rem;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   padding: 0 1.5rem;
 `;
 const StyledLink = styled(Link)`
@@ -95,10 +100,10 @@ const ProductPrice = styled.div`
   color: #f9f9f9;
 `;
 const TrashIcon = styled.i`
-    color: #f9f9f9;
-    cursor: pointer;
+  color: #f9f9f9;
+  cursor: pointer;
 
-    &:hover{
-        color: rgb(230, 0, 0);
-    }
-`
+  &:hover {
+    color: rgb(230, 0, 0);
+  }
+`;
