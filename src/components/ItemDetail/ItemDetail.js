@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useContext, useEffect } from "react";
 import AddFavoriteModal from "../AddFavoriteModal/AddFavoriteModal";
 import RemoveFavoriteModal from "../RemoveFavoriteModal/RemoveFavoriteModal";
@@ -5,6 +6,12 @@ import Counter from "./../Counter/Counter";
 import "./ItemDetail.css";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function ItemDetail({
   id,
@@ -20,6 +27,17 @@ export default function ItemDetail({
   const [showRemoveFav, setShowRemoveFav] = useState(false);
   const [size, setSize] = useState();
   const [quantity, setQuantity] = useState(0);
+  const [state, setState] = useState({
+    open: false,
+    vertical: "bottom",
+    horizontal: "right",
+  });
+
+  const { open, vertical, horizontal } = state;
+
+  const handleClose = () => {
+    setState({...state, open: false});
+  }
 
   const { cart, addProduct } = useContext(CartContext);
 
@@ -39,6 +57,9 @@ export default function ItemDetail({
       quantity: count,
     };
     addProduct(product);
+    if(count > 0) {
+      setState({...state, open: true})
+    }
   };
 
   // Changing the state of an alert to display it.
@@ -122,13 +143,20 @@ export default function ItemDetail({
           </div>
           <div className="detail-footer d-flex gap-4">
             {quantity > 0 ? (
-              <Link to='/cart' className="btn btn-warning">Go to Cart</Link>
+              <Link to="/cart" className="btn btn-warning">
+                Go to Cart
+              </Link>
             ) : (
               <Counter initial={0} stock={stock} onAdd={onAdd}></Counter>
             )}
           </div>
         </div>
       </div>
+      <Snackbar anchorOrigin={{vertical, horizontal}} open={open} autoHideDuration={2500} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          The product has been added to cart !
+        </Alert>
+      </Snackbar>
     </>
   );
 }

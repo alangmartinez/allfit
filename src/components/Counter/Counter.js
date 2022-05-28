@@ -35,7 +35,10 @@ export default function Counter({ initial, stock, onAdd }) {
         >
           +
         </button>
-        <button className="btn btn-warning col-7 py-2 ms-2" onClick={()=> onAdd(count)}>
+        <button
+          className="btn btn-warning col-7 py-2 ms-2"
+          onClick={()=> onAdd(count)}
+        >
           <i className="fa-solid fa-cart-plus me-2"></i>Add to Cart
         </button>
       </div>

@@ -3,7 +3,6 @@ import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-import Footer from "./components/Footer/Footer";
 import CartContextProvider from "./context/CartContext";
 import Cart from "./components/Cart/Cart";
 
@@ -43,7 +42,6 @@ export default function App() {
             />
           </Routes>
         </main>
-        <Footer />
       </BrowserRouter>
     </CartContextProvider>
   );

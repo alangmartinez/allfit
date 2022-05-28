@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList";
 import { getProducts } from "../../asyncmock";
 import "./ItemListContainer.css";
-import Spinner from "react-bootstrap/Spinner";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 export default function ItemListContainer() {
   const [products, setProducts] = useState([]);
@@ -14,42 +14,22 @@ export default function ItemListContainer() {
     getProducts(categoryId)
       .then((products) => setProducts(products))
       .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
+      .finally(() =>
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000)
+      );
   }, [categoryId]);
-
-  const handleOnResize = () => {
-    console.log("Se ha redimenzionado la ventana del contenedor ItemListContainer");
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', handleOnResize);
-
-    return(()=>{
-      window.removeEventListener('resize', handleOnResize);
-      }
-    )
-  }, []);
-
-  const style = {
-    marginTop: "6rem",
-    marginBottom: "2rem",
-  };
 
   return (
     <>
-      <div className="container pb-5 item-list-container" onClick={(e)=> { console.log('Hiciste click en el ItemListContainer')}}>
-        {loading ? (
-          <div
-            className="d-flex justify-content-center align-items-center"
-            style={{ width: "100%", height: "100%" }}
-          >
-            <Spinner animation="border" variant="warning" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          </div>
-        ) : (
-          <ItemList products={products} />
-        )}
+      <div
+        className="container pb-5 item-list-container"
+        onClick={(e) => {
+          console.log("Hiciste click en el ItemListContainer");
+        }}
+      >
+        {loading ? <Loader></Loader> : <ItemList products={products} />}
       </div>
     </>
   );
