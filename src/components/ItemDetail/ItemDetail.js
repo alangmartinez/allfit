@@ -6,12 +6,9 @@ import Counter from "./../Counter/Counter";
 import "./ItemDetail.css";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
+import styled from 'styled-components';
+import NotificationContext from "../../context/NotificationContext";
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
 export default function ItemDetail({
   id,
@@ -27,17 +24,8 @@ export default function ItemDetail({
   const [showRemoveFav, setShowRemoveFav] = useState(false);
   const [size, setSize] = useState();
   const [quantity, setQuantity] = useState(0);
-  const [state, setState] = useState({
-    open: false,
-    vertical: "bottom",
-    horizontal: "right",
-  });
 
-  const { open, vertical, horizontal } = state;
-
-  const handleClose = () => {
-    setState({...state, open: false});
-  }
+  const { setNotification, handleOpen } = useContext(NotificationContext);
 
   const { cart, addProduct } = useContext(CartContext);
 
@@ -57,8 +45,9 @@ export default function ItemDetail({
       quantity: count,
     };
     addProduct(product);
+    setNotification('success', `${count} ${title} has been added successfully to cart !`);
     if(count > 0) {
-      setState({...state, open: true})
+      handleOpen();
     }
   };
 
@@ -80,6 +69,13 @@ export default function ItemDetail({
 
   // Select Component
   const Select = ({ sizes = [] }) => {
+
+    const styles = {
+      width: '2.2rem',
+      fontSize: "13px",
+      textAlignCenter: "center",
+    }
+
     return (
       <>
         <label className="d-block px-0 mb-2">Talles :</label>
@@ -88,14 +84,7 @@ export default function ItemDetail({
             <button
               key={item.id}
               className="btn btn-outline-warning px-1 shadow-lg"
-              style={{
-                width: "2.2rem",
-                fontSize: "13px",
-                textAlignCenter: "center",
-              }}
-              onClick={() => {
-                setSize({ ...item, size: size });
-              }}
+              style={styles}
             >
               {item.size}
             </button>
@@ -110,9 +99,9 @@ export default function ItemDetail({
       <AddFavoriteModal active={showFav}></AddFavoriteModal>
       <RemoveFavoriteModal active={showRemoveFav}></RemoveFavoriteModal>
       <div className="d-flex justify-content-center gap-3 flex-wrap mt-4 item-detail">
-        <picture className="col-3">
-          <img className="fluid-img img-product" src={image}></img>
-        </picture>
+        <Picture className="col-3">
+          <Img className="fluid-img img-product shadow" src={image} alt={title}></Img>
+        </Picture>
         <div className="container detail-container col">
           <div className="detail-header">
             <h5 className="title">{title}</h5>
@@ -152,11 +141,22 @@ export default function ItemDetail({
           </div>
         </div>
       </div>
-      <Snackbar anchorOrigin={{vertical, horizontal}} open={open} autoHideDuration={2500} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          The product has been added to cart !
-        </Alert>
-      </Snackbar>
     </>
   );
 }
+
+const Picture = styled.picture`
+  overflow: hidden;
+  border-radius: .25rem;
+`
+
+const Img = styled.img`
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: all ease 400ms;
+
+  &:hover{
+    transform: scale(1.05);
+  }
+`

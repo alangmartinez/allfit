@@ -11,7 +11,7 @@ export default function AddFavoriteModal({ active }) {
         }
         role="alert"
       >
-        <i className="fa-solid fa-heart me-2"></i>¡Añadido a tus favoritos!
+        <i className="fa-solid fa-heart me-2"></i>Added to favorites !
       </div>
     </>
   );

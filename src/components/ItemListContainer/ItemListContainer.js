@@ -13,7 +13,7 @@ export default function ItemListContainer() {
   useEffect(() => {
     getProducts(categoryId)
       .then((products) => setProducts(products))
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(`¡Oh no!, something has gone wrong during the loading products. Please contact us and send us the error below: ${err}`))
       .finally(() =>
         setTimeout(() => {
           setLoading(false);

@@ -2,9 +2,17 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import NotificationContext from "../../context/NotificationContext";
 
 export default function Cart() {
   const { cart, removeProduct } = useContext(CartContext);
+  const { setNotification, handleOpen } = useContext(NotificationContext);
+
+  const handleClick = (id) => {
+    removeProduct(id);
+    setNotification('error', 'The product has been removed from the cart !');
+    handleOpen();
+  }
 
   return (
     <>
@@ -28,7 +36,9 @@ export default function Cart() {
                 <ProductPrice>{product.price}</ProductPrice>
                 <TrashIcon
                   className="fa-solid fa-trash shadow"
-                  onClick={() => removeProduct(product.id)}
+                  onClick={() => {
+                    handleClick(product.id)
+                  }}
                 ></TrashIcon>
               </ProductContainer>
             );

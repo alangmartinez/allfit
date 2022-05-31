@@ -15,7 +15,7 @@ export default function ItemListDetail({ setCart, cart }) {
   useEffect(() => {
     getProductsById(productId)
       .then((product) => setProduct(product))
-      .catch((e) => console.log(e))
+      .catch((err) => console.log(`¡Oh no!, something has gone wrong with loading of this product. Please contact us and send us the error below: ${err}`))
       .finally(() =>
         setTimeout(() => {
           setLoading(false);

@@ -1,32 +1,28 @@
-import { useState } from 'react';
-import './searchInput.css'
+import { useContext } from "react";
+import { SearchContext } from "../../context/SearchContext";
+import "./searchInput.css";
 
 export default function SearchInput() {
-    const [show, setShow] = useState(false);
+  const { products, handleSearch } = useContext(SearchContext);
 
-    const handleOnKeyDownSearch = (e)=> {
-        console.log(e);
-        if(e.target.value.length >= 3) {
-            console.log(e.target.value.replace(/\s+/g, ''));
-            if (e.code == 'Enter') {
-                console.log('Enviado')
-            }
-        }
-    }
+  const handleOnKeyUpSearch = (e) => {
+      handleSearch(e.target.value);
+      console.log(products);
+  };
 
   return (
     <>
-        <div className="d-flex justify-content-center align-items-center">
-            <i className="fa-solid fa-magnifying-glass" onClick={() => setShow(!show)}></i>
-            <input 
-                type="text"
-                className="search-input form-control col-md"
-                name="search"
-                id="search-input"
-                placeholder='Search...'
-                onKeyDown={handleOnKeyDownSearch}
-            />
-        </div>
+      <div className="d-flex justify-content-center align-items-center">
+        <i className="fa-solid fa-magnifying-glass"></i>
+        <input
+          type="text"
+          className="search-input form-control col-md"
+          name="search"
+          id="search-input"
+          placeholder="Search..."
+          onKeyUp={handleOnKeyUpSearch}
+        />
+      </div>
     </>
-  )
+  );
 }
