@@ -1,14 +1,18 @@
 import "./Menu.css";
 import { Link, NavLink } from "react-router-dom";
-import { getCategorys } from "../../asyncmock";
-import { useEffect, useState } from "react";
 
 export default function Menu() {
-  const [categorys, setCategorys] = useState([]);
-
-  useEffect(() => {
-    getCategorys().then((categorys) => setCategorys(categorys));
-  }, []);
+  
+  const category = [
+    {
+      id: 'man',
+      description: 'Man',
+    },
+    {
+      id: 'woman',
+      description: 'Woman',
+    }
+  ]
 
   return (
     <>
@@ -16,15 +20,17 @@ export default function Menu() {
         <Link to="/" className="link">
           <li className="list-item">Home</li>
         </Link>
-        {categorys.map((category) => (
-          <NavLink
-            key={category.id}
-            to={`/category/${category.id}`}
-            className={({isActive}) => isActive ? 'active' : 'link'}
-          >
-            <li className="list-item">{category.description}</li>
-          </NavLink>
-        ))}
+        {
+          category.map( item => {
+            return(
+              <Link to={`/category/${item.id}`} className='link' key={item.id}>
+                <li className='list-item'>
+                  {item.description}
+                </li>
+              </Link>
+            )
+          })
+        }
         <Link to="/sale" className="link">
           <li className="list-item">Sale</li>
         </Link>

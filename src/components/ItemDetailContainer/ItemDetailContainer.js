@@ -1,11 +1,11 @@
-import { getProductsById } from "../../asyncmock";
 import { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import "./ItemDetailContainer.css";
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
-
+import { firestoreDataBase } from "../../services/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function ItemListDetail({ setCart, cart }) {
   const [product, setProduct] = useState();
@@ -13,14 +13,15 @@ export default function ItemListDetail({ setCart, cart }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProductsById(productId)
-      .then((product) => setProduct(product))
-      .catch((err) => console.log(`¡Oh no!, something has gone wrong with loading of this product. Please contact us and send us the error below: ${err}`))
-      .finally(() =>
-        setTimeout(() => {
-          setLoading(false);
-        }, 2000)
-      );
+    getDoc(doc(firestoreDataBase, "products", productId))
+      .then((response) => {
+        const product = {id: response.id, ...response.data()};
+        setProduct(product);
+      })
+      .catch((e) => console.log(`Oh no!, something goes wrong when we are trying to load this product, please contact us and send us the below error: ${e}`))
+      .finally(() => {
+        setLoading(false);
+      }, 2000);
   }, [productId]);
 
   return (
