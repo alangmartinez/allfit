@@ -105,7 +105,7 @@ export default function ItemDetail({
         <div className="container detail-container col">
           <div className="detail-header">
             <h5 className="title">{title}</h5>
-            <span className="price">{price}</span>
+            <span className="price">${price}</span>
             {favorite ? (
               <i
                 className="fa-solid fa-heart"

@@ -1,25 +1,37 @@
 import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList";
-import { getProducts } from "../../asyncmock";
 import "./ItemListContainer.css";
 import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import { firestoreDataBase } from "../../services/firebase";
+import { getDocs, collection, where, query } from 'firebase/firestore';
 
 export default function ItemListContainer() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
 
-  useEffect(() => {
-    getProducts(categoryId)
-      .then((products) => setProducts(products))
-      .catch((err) => console.log(`¡Oh no!, something has gone wrong during the loading products. Please contact us and send us the error below: ${err}`))
-      .finally(() =>
-        setTimeout(() => {
+  useEffect(()=> {
+    const collectionReference = categoryId 
+      ? query(collection(firestoreDataBase, 'products'), where('category', '==', categoryId))
+      : collection(firestoreDataBase, 'products');
+
+      console.log(collectionReference)
+    getDocs(collectionReference)
+      .then(response => {
+        const products = response.docs.map( doc => {
+          return {id: doc.id, ...doc.data()}
+        })
+        setProducts(products);
+      }
+      )
+      .catch(e => console.log(`¡Oh no!, something has gone wrong during the loading products. Please contact us and send us the error below: ${e}`))
+      .finally(()=> {
+        setTimeout(()=> {
           setLoading(false);
         }, 2000)
-      );
-  }, [categoryId]);
+      })
+  }, [categoryId])
 
   return (
     <>

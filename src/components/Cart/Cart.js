@@ -10,9 +10,9 @@ export default function Cart() {
 
   const handleClick = (id) => {
     removeProduct(id);
-    setNotification('error', 'The product has been removed from the cart !');
+    setNotification("error", "The product has been removed from the cart !");
     handleOpen();
-  }
+  };
 
   return (
     <>
@@ -22,27 +22,38 @@ export default function Cart() {
             <i className="fa-solid fa-cart-shopping me-2"></i>Cart :
           </CartTitle>
           <Hr></Hr>
-          {cart.map((product) => {
-            return (
-              <ProductContainer key={product.id}>
-                <StyledLink to={`/detail/${product.id}`}>
-                  <Img
-                    src={product.image}
-                    className="img-fluid rounded-1 shadow-lg"
-                  ></Img>
-                </StyledLink>
-                <ProductTitle>{product.title}</ProductTitle>
-                <ProductQuantity>{product.quantity}</ProductQuantity>
-                <ProductPrice>{product.price}</ProductPrice>
-                <TrashIcon
-                  className="fa-solid fa-trash shadow"
-                  onClick={() => {
-                    handleClick(product.id)
-                  }}
-                ></TrashIcon>
-              </ProductContainer>
-            );
-          })}
+          {cart.length === 0 ? (
+            <div className="d-flex justify-content-center align-items-center flex-column">
+              <h2 style={{ color: "#f9f9f9" }} className="h2 mb-4">
+                You have no products in your cart
+              </h2>
+              <Link to="/">
+                <i className="fa-solid fa-arrow-left me-2"></i>Go Back
+              </Link>
+            </div>
+          ) : (
+            cart.map((product) => {
+              return (
+                <ProductContainer key={product.id}>
+                  <StyledLink to={`/detail/${product.id}`}>
+                    <Img
+                      src={product.image}
+                      className="img-fluid rounded-1 shadow-lg"
+                    ></Img>
+                  </StyledLink>
+                  <ProductTitle>{product.title}</ProductTitle>
+                  <ProductQuantity>{product.quantity}</ProductQuantity>
+                  <ProductPrice>{product.price}</ProductPrice>
+                  <TrashIcon
+                    className="fa-solid fa-trash shadow"
+                    onClick={() => {
+                      handleClick(product.id);
+                    }}
+                  ></TrashIcon>
+                </ProductContainer>
+              );
+            })
+          )}
         </CartContainer>
       </div>
     </>
@@ -68,7 +79,7 @@ const CartTitle = styled.h2`
   line-height: 1.2rem;
   font-size: 1.2rem;
   letter-spacing: 1px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 `;
 const Hr = styled.hr`
   color: #f9f9f9;
