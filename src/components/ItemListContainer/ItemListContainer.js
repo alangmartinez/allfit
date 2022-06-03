@@ -16,7 +16,6 @@ export default function ItemListContainer() {
       ? query(collection(firestoreDataBase, 'products'), where('category', '==', categoryId))
       : collection(firestoreDataBase, 'products');
 
-      console.log(collectionReference)
     getDocs(collectionReference)
       .then(response => {
         const products = response.docs.map( doc => {

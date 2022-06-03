@@ -1,18 +1,26 @@
 import "./Menu.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { firestoreDataBase } from "../../services/firebase";
 
 export default function Menu() {
-  
-  const category = [
-    {
-      id: 'man',
-      description: 'Man',
-    },
-    {
-      id: 'woman',
-      description: 'Woman',
-    }
-  ]
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getDocs(collection(firestoreDataBase, "categories"))
+      .then((response) => {
+        const categories = response.docs.map((category) => {
+          return { id: category.id, ...category.data() };
+        });
+        setCategories(categories);
+      })
+      .catch((e) =>
+        console.log(
+          `Ups, we sorry ! We have a problem redirecting you to this category, please contact us and send us the below error ${e}`
+        )
+      );
+  }, []);
 
   return (
     <>
@@ -20,17 +28,13 @@ export default function Menu() {
         <Link to="/" className="link">
           <li className="list-item">Home</li>
         </Link>
-        {
-          category.map( item => {
-            return(
-              <Link to={`/category/${item.id}`} className='link' key={item.id}>
-                <li className='list-item'>
-                  {item.description}
-                </li>
-              </Link>
-            )
-          })
-        }
+        {categories.map((category) => {
+          return (
+            <Link to={`/category/${category.id}`} className="link" key={category.id}>
+              <li className="list-item">{category.description}</li>
+            </Link>
+          );
+        })}
         <Link to="/sale" className="link">
           <li className="list-item">Sale</li>
         </Link>

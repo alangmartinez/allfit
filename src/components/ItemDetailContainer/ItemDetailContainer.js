@@ -15,10 +15,14 @@ export default function ItemListDetail({ setCart, cart }) {
   useEffect(() => {
     getDoc(doc(firestoreDataBase, "products", productId))
       .then((response) => {
-        const product = {id: response.id, ...response.data()};
+        const product = { id: response.id, ...response.data() };
         setProduct(product);
       })
-      .catch((e) => console.log(`Oh no!, something goes wrong when we are trying to load this product, please contact us and send us the below error: ${e}`))
+      .catch((e) =>
+        console.log(
+          `Oh no!, something goes wrong when we are trying to load this product, please contact us and send us the below error: ${e}`
+        )
+      )
       .finally(() => {
         setLoading(false);
       }, 2000);
