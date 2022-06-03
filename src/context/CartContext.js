@@ -49,7 +49,9 @@ export const CartContextProvider = ({ children }) => {
   };
 
   // Update the stock after have been added to cart
-  
+  const getProductQuantity = (id) => {
+    return cart.find((product) => product.id === id)?.quantity
+  };
 
   return (
     <>

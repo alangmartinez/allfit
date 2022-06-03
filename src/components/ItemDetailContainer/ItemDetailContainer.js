@@ -24,8 +24,10 @@ export default function ItemListDetail({ setCart, cart }) {
         )
       )
       .finally(() => {
-        setLoading(false);
-      }, 2000);
+        setTimeout(() => {
+          setLoading(false)
+        }, 1500)
+      });
   }, [productId]);
 
   return (

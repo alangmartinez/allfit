@@ -28,7 +28,7 @@ export default function ItemListContainer() {
       .finally(()=> {
         setTimeout(()=> {
           setLoading(false);
-        }, 2000)
+        }, 1500)
       })
   }, [categoryId])
 

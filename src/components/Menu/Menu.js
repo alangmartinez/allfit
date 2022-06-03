@@ -1,14 +1,16 @@
 import "./Menu.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { firestoreDataBase } from "../../services/firebase";
 
 export default function Menu() {
   const [categories, setCategories] = useState([]);
 
+  const collectionRef = query(collection(firestoreDataBase, 'categories'), orderBy('order', 'asc'))
+
   useEffect(() => {
-    getDocs(collection(firestoreDataBase, "categories"))
+    getDocs(collectionRef)
       .then((response) => {
         const categories = response.docs.map((category) => {
           return { id: category.id, ...category.data() };
@@ -35,9 +37,6 @@ export default function Menu() {
             </Link>
           );
         })}
-        <Link to="/sale" className="link">
-          <li className="list-item">Sale</li>
-        </Link>
         <Link to="/contact-us" className="link">
           <li className="list-item">Contact Us</li>
         </Link>
