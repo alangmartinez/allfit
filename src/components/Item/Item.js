@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 export default function Item({ id, title, image, newModel }) {
-  const handleClick = (e) => {
-    e.stopPropagation();
-    console.log("Hiciste click en Item");
-  };
 
   return (
     <>
@@ -27,7 +23,6 @@ export default function Item({ id, title, image, newModel }) {
           <Link
             to={`/detail/${id}`}
             className="btn btn-outline-warning col-6 seeMore-btn"
-            onClick={handleClick}
           >
             + See More
           </Link>

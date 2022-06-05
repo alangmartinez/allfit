@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
@@ -41,10 +41,10 @@ export default function Cart() {
                       className="img-fluid rounded-1 shadow-lg"
                     ></Img>
                   </StyledLink>
-                  <ProductTitle>{product.title}</ProductTitle>
-                  <ProductQuantity>{product.quantity}</ProductQuantity>
-                  <ProductPrice>{product.price}</ProductPrice>
-                  <TrashIcon
+                  <ProductTitle>{ product.title }</ProductTitle>
+                  <ProductQuantity>{ product.quantity }</ProductQuantity>
+                  <ProductPrice>${ product.price * product.quantity }</ProductPrice>
+                  <TrashIcon  
                     className="fa-solid fa-trash shadow"
                     onClick={() => {
                       handleClick(product.id);

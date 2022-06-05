@@ -8,6 +8,7 @@ import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import NotificationContext from "../../context/NotificationContext";
+import { FavoriteContext } from "../../context/FavoriteContext";
 
 
 export default function ItemDetail({
@@ -19,17 +20,19 @@ export default function ItemDetail({
   image,
   sizes,
 }) {
+  // Contexts
+  const { setNotification, handleOpen } = useContext(NotificationContext);
+  const { cart, addProduct, saveInLS } = useContext(CartContext);
+
   const [favorite, setFavorite] = useState(false);
   const [showFav, setShowFav] = useState(false);
   const [showRemoveFav, setShowRemoveFav] = useState(false);
   const [size, setSize] = useState();
   const [quantity, setQuantity] = useState(0);
 
-  const { setNotification, handleOpen } = useContext(NotificationContext);
-
-  const { cart, addProduct } = useContext(CartContext);
 
   useEffect(() => {
+    saveInLS('cart', cart)
     console.log(cart);
   }, [cart]);
 

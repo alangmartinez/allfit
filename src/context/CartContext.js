@@ -1,11 +1,21 @@
-import { createContext, useState } from "react";
+import { stringify } from "@firebase/util";
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext([]);
 
 export const CartContextProvider = ({ children }) => {
-  let [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem("cart")) || []
+  let [cart, setCart] = useState( () => {
+    try {
+     return JSON.parse(localStorage.getItem("cart")) || []
+    } catch (e) {
+      return []
+    }
+  }
   );
+
+  useEffect(()=> {
+    localStorage.setItem('cart', stringify(cart))
+  }, [cart])
 
   // Function to add a product to the cart.
   const addProduct = (productToAdd) => {
@@ -19,16 +29,13 @@ export const CartContextProvider = ({ children }) => {
     } else {
       setCart([...cart, productToAdd]);
     }
-    // Save the cart in the Local Storage
-    saveInLS("cart", cart);
   };
 
   // Function to remove a product from the cart.
   const removeProduct = (id) => {
     const filteredCart = cart.filter((product) => product.id !== id);
     setCart(filteredCart);
-    saveInLS("cart", cart);
-    console.log(cart);
+    saveInLS('cart', cart);
   };
 
   // Check if the product is already in the cart.
@@ -48,6 +55,12 @@ export const CartContextProvider = ({ children }) => {
     localStorage.setItem(key, JSON.stringify(value));
   };
 
+  // Updating the price in the cart after add a repetead product 
+  const updatePrice = () => {
+    
+  }
+
+
   // Update the stock after have been added to cart
   const getProductQuantity = (id) => {
     return cart.find((product) => product.id === id)?.quantity
@@ -56,7 +69,7 @@ export const CartContextProvider = ({ children }) => {
   return (
     <>
       <CartContext.Provider
-        value={{ cart, addProduct, getQuantity, removeProduct }}
+        value={{ cart, addProduct, getQuantity, removeProduct, saveInLS }}
       >
         {children}
       </CartContext.Provider>
