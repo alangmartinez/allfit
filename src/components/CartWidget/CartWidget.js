@@ -4,7 +4,7 @@ import "./CartWidget.css";
 import { CartContext } from "../../context/CartContext";
 
 export default function CartWidget() {
-  const { getQuantity, cart } = useContext(CartContext);
+  const { getQuantity } = useContext(CartContext);
 
   return (
     <>

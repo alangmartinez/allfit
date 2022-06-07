@@ -31,11 +31,7 @@ export default function ItemListContainer() {
           `¡Oh no!, something has gone wrong during the loading products. Please contact us and send us the error below: ${e}`
         )
       )
-      .finally(() => {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-      });
+      .finally(() => setLoading(false));
   }, [categoryId]);
 
   return (

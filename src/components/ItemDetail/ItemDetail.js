@@ -8,7 +8,6 @@ import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import NotificationContext from "../../context/NotificationContext";
-import { FavoriteContext } from "../../context/FavoriteContext";
 
 
 export default function ItemDetail({
@@ -27,7 +26,6 @@ export default function ItemDetail({
   const [favorite, setFavorite] = useState(false);
   const [showFav, setShowFav] = useState(false);
   const [showRemoveFav, setShowRemoveFav] = useState(false);
-  const [size, setSize] = useState();
   const [quantity, setQuantity] = useState(0);
 
 
@@ -42,7 +40,6 @@ export default function ItemDetail({
     const product = {
       id,
       title,
-      size,
       image,
       price,
       quantity: count,
@@ -136,7 +133,7 @@ export default function ItemDetail({
           <div className="detail-footer d-flex gap-4">
             {quantity > 0 ? (
               <Link to="/cart" className="btn btn-warning">
-                Go to Cart
+                <i className="fa-solid fa-cart-shopping me-1" style={{ color: '#000' }}></i> Go to Cart
               </Link>
             ) : (
               <Counter initial={0} stock={stock} onAdd={onAdd}></Counter>

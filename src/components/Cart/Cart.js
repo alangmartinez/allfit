@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import NotificationContext from "../../context/NotificationContext";
+import UserForm from "../UserForm/UserForm";
 
 export default function Cart() {
-  const { cart, removeProduct } = useContext(CartContext);
+  const { cart, removeProduct, getTotal, cleanCart } = useContext(CartContext);
   const { setNotification, handleOpen } = useContext(NotificationContext);
 
   const handleClick = (id) => {
@@ -41,10 +42,12 @@ export default function Cart() {
                       className="img-fluid rounded-1 shadow-lg"
                     ></Img>
                   </StyledLink>
-                  <ProductTitle>{ product.title }</ProductTitle>
-                  <ProductQuantity>{ product.quantity }</ProductQuantity>
-                  <ProductPrice>${ product.price * product.quantity }</ProductPrice>
-                  <TrashIcon  
+                  <ProductTitle>{product.title}</ProductTitle>
+                  <ProductQuantity>{product.quantity}</ProductQuantity>
+                  <ProductPrice>
+                    ${product.price * product.quantity}
+                  </ProductPrice>
+                  <TrashIcon
                     className="fa-solid fa-trash shadow"
                     onClick={() => {
                       handleClick(product.id);
@@ -54,8 +57,26 @@ export default function Cart() {
               );
             })
           )}
+          <hr style={{opacity: 1, color: '#fff'}}></hr>
+          <div className="d-flex justify-content-between px-3 mb-3">
+            <p style={{ color: '#f9f9f9', fontFamily: '"Raleway", sans-serif', letterSpacing: '2px'}} className='h5 m-0'>Total :</p>
+            <span style={{ color: '#f9f9f9', fontSize: '1.2rem' }}>${ getTotal() }</span>
+          </div>
+          <div
+            className="d-flex justify-content-end gap-3"
+            style={{ color: "#f9f9f9" }}
+          >
+            {cart.length > 0 && (
+              <>
+                <button className="btn btn-danger" onClick={cleanCart}>
+                  Clean<i className="fa-solid fa-broom ms-2 shadow"></i>
+                </button>
+              </>
+            )}
+          </div>
         </CartContainer>
       </div>
+      <UserForm />
     </>
   );
 }

@@ -4,28 +4,31 @@ import { createContext, useEffect, useState } from "react";
 export const CartContext = createContext([]);
 
 export const CartContextProvider = ({ children }) => {
-  let [cart, setCart] = useState( () => {
+  let [cart, setCart] = useState(() => {
     try {
-     return JSON.parse(localStorage.getItem("cart")) || []
+      return JSON.parse(localStorage.getItem("cart")) || [];
     } catch (e) {
-      return []
+      return [];
     }
-  }
-  );
+  });
 
-  useEffect(()=> {
-    localStorage.setItem('cart', stringify(cart))
-  }, [cart])
+  useEffect(() => {
+    localStorage.setItem("cart", stringify(cart));
+  }, [cart]);
 
   // Function to add a product to the cart.
   const addProduct = (productToAdd) => {
-    if (isInCart(productToAdd.id)) {
-      const newCart = cart.map((product) =>
-        product.id === productToAdd.id
-          ? { ...product, quantity: product.quantity + productToAdd.quantity }
-          : product
+    // Check if the product is already in the cart.
+    const isInCart = cart.some((product) => product.id === productToAdd.id);
+
+    if (isInCart) {
+      setCart(
+        cart.map((product) => {
+          return product.id === productToAdd.id
+            ? { ...product, quantity: product.quantity + productToAdd.quantity }
+            : product;
+        })
       );
-      setCart(newCart);
     } else {
       setCart([...cart, productToAdd]);
     }
@@ -35,11 +38,8 @@ export const CartContextProvider = ({ children }) => {
   const removeProduct = (id) => {
     const filteredCart = cart.filter((product) => product.id !== id);
     setCart(filteredCart);
-    saveInLS('cart', cart);
+    saveInLS("cart", cart);
   };
-
-  // Check if the product is already in the cart.
-  const isInCart = (id) => cart.find((product) => product.id === id);
 
   // Function to get the quantity of products in the cart.
   const getQuantity = () => {
@@ -55,21 +55,22 @@ export const CartContextProvider = ({ children }) => {
     localStorage.setItem(key, JSON.stringify(value));
   };
 
-  // Updating the price in the cart after add a repetead product 
-  const updatePrice = () => {
-    
+  const cleanCart =  () => {
+    setCart([]);
   }
 
-
-  // Update the stock after have been added to cart
-  const getProductQuantity = (id) => {
-    return cart.find((product) => product.id === id)?.quantity
-  };
+  const getTotal =  () => {
+    let total = 0;
+    cart.forEach((product) => {
+      total += product.price;
+    });
+    return total
+  }
 
   return (
     <>
       <CartContext.Provider
-        value={{ cart, addProduct, getQuantity, removeProduct, saveInLS }}
+        value={{ cart, setCart, addProduct, getQuantity, removeProduct, saveInLS, getTotal, cleanCart }}
       >
         {children}
       </CartContext.Provider>

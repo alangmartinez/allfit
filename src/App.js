@@ -6,13 +6,11 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import CartContextProvider from "./context/CartContext";
 import Cart from "./components/Cart/Cart";
 import { NotificationProvider } from "./context/NotificationContext";
-import FavoriteProvider from "./context/FavoriteContext";
 
 export default function App() {
   return (
     <CartContextProvider>
       <NotificationProvider>
-        <FavoriteProvider>
           <BrowserRouter>
             <header>
               <NavBar />
@@ -44,7 +42,6 @@ export default function App() {
               </Routes>
             </main>
           </BrowserRouter>
-        </FavoriteProvider>
       </NotificationProvider>
     </CartContextProvider>
   );

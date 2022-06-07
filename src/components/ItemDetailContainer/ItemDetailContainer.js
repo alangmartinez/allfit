@@ -23,11 +23,7 @@ export default function ItemListDetail({ setCart, cart }) {
           `Oh no!, something goes wrong when we are trying to load this product, please contact us and send us the below error: ${e}`
         )
       )
-      .finally(() => {
-        setTimeout(() => {
-          setLoading(false)
-        }, 1500)
-      });
+      .finally(() => setLoading(false));
   }, [productId]);
 
   return (
