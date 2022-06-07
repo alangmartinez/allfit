@@ -6,6 +6,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import CartContextProvider from "./context/CartContext";
 import Cart from "./components/Cart/Cart";
 import { NotificationProvider } from "./context/NotificationContext";
+import styled from 'styled-components';
 
 export default function App() {
   return (
@@ -40,9 +41,19 @@ export default function App() {
                   }
                 />
               </Routes>
+              <WhatsAppIcon className="shadow-lg" src="/icons/whatsapp.png" alt="whats app icon"/>
             </main>
           </BrowserRouter>
       </NotificationProvider>
     </CartContextProvider>
   );
 }
+
+const WhatsAppIcon = styled.img`
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  height: 55px;
+  width: 55px;
+  cursor: pointer;
+`

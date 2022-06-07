@@ -13,6 +13,8 @@ import {
 import { firestoreDataBase } from "../../services/firebase";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
+import CartNotification from "../../notifications/CartNotification";
+import NotificationContext from "../../context/NotificationContext";
 
 export default function UserForm() {
   const { cart, getTotal } = useContext(CartContext);
@@ -34,7 +36,6 @@ export default function UserForm() {
       total: getTotal(),
       date: new Date(),
     };
-    console.log(objOrder);
 
     const collectionRef = collection(firestoreDataBase, "products");
 
@@ -67,10 +68,7 @@ export default function UserForm() {
         console.log(`El ID de la orden creada es: ${id}`);
       })
       .catch((e) => {
-        console.log(`Ups!, we have a problem 
-        ${e.name}
-        ${e.products}
-        `);
+        console.log(e);
       });
   };
 
