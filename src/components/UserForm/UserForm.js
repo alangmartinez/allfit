@@ -4,12 +4,15 @@ import SendIcon from "@mui/icons-material/Send";
 import {
   addDoc,
   collection,
+  documentId,
+  getDocs,
+  query,
+  where,
+  writeBatch,
 } from "firebase/firestore";
 import { firestoreDataBase } from "../../services/firebase";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
-import { Snackbar } from "@mui/material";
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
 
 export default function UserForm() {
   const { cart, getTotal } = useContext(CartContext);
@@ -20,35 +23,63 @@ export default function UserForm() {
     email: "",
   });
 
-  const addDocToDataBase = (e) => {
-    e.preventDefault();
+  const batch = writeBatch(firestoreDataBase);
+  const ids = cart.map((product) => product.id);
+  const outOfStock = [];
 
-    const userObj = {
+  const addDocToDataBase = () => {
+    const objOrder = {
       items: cart,
       buyerData: buyerData,
       total: getTotal(),
       date: new Date(),
     };
-    console.log(userObj);
+    console.log(objOrder);
 
-    const collectionRef = collection(firestoreDataBase, "purchases");
+    const collectionRef = collection(firestoreDataBase, "products");
 
-    addDoc(collectionRef, userObj)
-      .then((response) => console.log(response))
+    getDocs(query(collectionRef, where(documentId(), "in", ids)))
+      .then((response) => {
+        response.docs.forEach((doc) => {
+          const dataDoc = doc.data();
+          const prodQuantity = cart.find(
+            (product) => product.id === doc.id
+          )?.quantity;
+
+          dataDoc.stock >= prodQuantity
+            ? batch.update(doc.ref, { stock: dataDoc.stock - prodQuantity })
+            : outOfStock.push({ id: doc.id, ...dataDoc });
+        });
+      })
+      .then(() => {
+        const collectionRef = collection(firestoreDataBase, "orders");
+        if (outOfStock.length === 0) {
+          return addDoc(collectionRef, objOrder);
+        } else {
+          return Promise.reject({
+            name: "Out of Stock Products",
+            products: outOfStock,
+          });
+        }
+      })
+      .then(({ id }) => {
+        batch.commit();
+        console.log(`El ID de la orden creada es: ${id}`);
+      })
       .catch((e) => {
-        console.log(
-          `Ups!, we have found a problem adding your purchase to our data base. ${e}`
-        );
+        console.log(`Ups!, we have a problem 
+        ${e.name}
+        ${e.products}
+        `);
       });
   };
 
   const handleOnChange = (e) => {
     setBuyerData({
       ...buyerData,
-      [e.target.name]: e.target.value
-    }) 
-  }
-
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <>
@@ -121,7 +152,6 @@ export default function UserForm() {
               endIcon={<SendIcon />}
               size="medium"
               onClick={addDocToDataBase}
-              type='submit'
             >
               Send
             </Button>
