@@ -8,6 +8,8 @@ import {
 import { firestoreDataBase } from "../../services/firebase";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
+import { Snackbar } from "@mui/material";
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 
 export default function UserForm() {
   const { cart, getTotal } = useContext(CartContext);
@@ -18,7 +20,9 @@ export default function UserForm() {
     email: "",
   });
 
-  const addDocToDataBase = () => {
+  const addDocToDataBase = (e) => {
+    e.preventDefault();
+
     const userObj = {
       items: cart,
       buyerData: buyerData,
@@ -41,10 +45,10 @@ export default function UserForm() {
   const handleOnChange = (e) => {
     setBuyerData({
       ...buyerData,
-      [e.target.name]: e.target.value,
-    });
-    console.log(buyerData);
-  };
+      [e.target.name]: e.target.value
+    }) 
+  }
+
 
   return (
     <>
@@ -117,6 +121,7 @@ export default function UserForm() {
               endIcon={<SendIcon />}
               size="medium"
               onClick={addDocToDataBase}
+              type='submit'
             >
               Send
             </Button>
